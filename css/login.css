@@ -1,0 +1,45 @@
+/* =========================================
+   ESTILOS EXCLUSIVOS DEL LOGIN
+========================================= */
+
+.login-section {
+  background-image: linear-gradient(to bottom, rgba(33, 37, 41, 0) 50%, rgba(33, 37, 41, 1) 100%), url("../img/bg-login.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Color oscuro de respaldo por si la imagen no carga */
+  background-color: var(--color-gris-oscuro);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tarjeta del formulario con transparencia y desenfoque (Glassmorphism) */
+.login-card {
+  background: rgba(10, 10, 10, 0.85); /* Fondo casi negro semi-transparente */
+  border: 1px solid var(--color-secundario); /* Borde rojo Audi */
+  border-radius: 0; /* Estilo agresivo/deportivo */
+  color: var(--color-fondo);
+  backdrop-filter: blur(5px); /* Desenfoque elegante del fondo */
+}
+
+/* Ajustes a los campos de texto para el modo oscuro */
+.login-card .form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  color: white;
+  border-radius: 0;
+}
+
+.login-card .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-secundario);
+  box-shadow: none;
+  color: white;
+}
+
+/* placeholder gris clarito */
+.login-card .form-control::placeholder {
+  color: #888;
+}
