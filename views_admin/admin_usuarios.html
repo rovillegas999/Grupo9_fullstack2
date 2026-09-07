@@ -20,7 +20,7 @@
                 AUDI
                 <span class="text-danger">F1</span>
               </h4>
-              <p class="text-muted" style="font-size: 0.8rem; letter-spacing: 2px">PANEL DE CONTROL</p>
+              <p class="text-muted admin-brand-subtitle">PANEL DE CONTROL</p>
             </div>
 
             <ul class="nav flex-column mb-auto">
@@ -57,18 +57,18 @@
 
         <!-- MAIN CONTENT -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 admin-content">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom border-secondary">
+          <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom border-secondary">
             <h1 class="h2 fw-bold text-uppercase">Directorio de Pilotos</h1>
             <button class="btn btn-danger rounded-0 fw-bold">
               <i class="bi bi-person-plus-fill me-1"></i>
               NUEVO USUARIO
             </button>
-          </div>
+          </header>
 
           <!-- FORMULARIO DE USUARIO (CRUD) -->
           <div class="card border-0 shadow-sm rounded-0 mb-5">
             <div class="card-header bg-dark text-white rounded-0 py-3">
-              <h5 class="mb-0 fw-bold text-uppercase" style="font-size: 0.9rem">
+              <h5 class="mb-0 fw-bold text-uppercase fs-sm">
                 <i class="bi bi-person-badge-fill me-2"></i>
                 Crear / Editar Usuario
               </h5>
@@ -79,28 +79,28 @@
               <form id="form-admin-usuario" novalidate>
                 <div class="row g-4">
                   <div class="col-md-4">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">RUT (Sin puntos ni guión)</label>
-                    <input type="text" id="usr-rut" class="form-control rounded-0" placeholder="Ej: 19011022K" required />
+                    <label for="usr-rut" class="form-label text-uppercase fw-bold fs-xxs">RUT (Sin puntos ni guión)</label>
+                    <input type="text" id="usr-rut" name="usr-rut" autocomplete="off" class="form-control rounded-0" placeholder="Ej: 19011022K" required />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Nombre Completo</label>
-                    <input type="text" id="usr-nombre" class="form-control rounded-0" placeholder="Nombre real" required />
+                    <label for="usr-nombre" class="form-label text-uppercase fw-bold fs-xxs">Nombre Completo</label>
+                    <input type="text" id="usr-nombre" name="usr-nombre" autocomplete="name" class="form-control rounded-0" placeholder="Nombre real" required />
                   </div>
                   <div class="col-md-4">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Correo Electrónico</label>
-                    <input type="email" id="usr-correo" class="form-control rounded-0" placeholder="@duoc.cl" required />
+                    <label for="usr-correo" class="form-label text-uppercase fw-bold fs-xxs">Correo Electrónico</label>
+                    <input type="email" id="usr-correo" name="usr-correo" autocomplete="email" class="form-control rounded-0" placeholder="@duoc.cl" required />
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Nivel de Acceso (Rol)</label>
-                    <select id="usr-rol" class="form-select rounded-0" required>
+                    <label for="usr-rol" class="form-label text-uppercase fw-bold fs-xxs">Nivel de Acceso (Rol)</label>
+                    <select id="usr-rol" name="usr-rol" class="form-select rounded-0" required>
                       <option selected disabled>Selecciona el rol en el sistema...</option>
                       <option value="Administrador">Administrador (Control Total)</option>
                       <option value="Cliente">Cliente Estándar</option>
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Contraseña de Seguridad</label>
-                    <input type="password" id="usr-pass" class="form-control rounded-0" placeholder="••••••••" required />
+                    <label for="usr-pass" class="form-label text-uppercase fw-bold fs-xxs">Contraseña de Seguridad</label>
+                    <input type="password" id="usr-pass" name="usr-pass" autocomplete="new-password" class="form-control rounded-0" placeholder="••••••••" required />
                   </div>
                 </div>
                 <div class="mt-4 text-end border-top pt-3">
@@ -119,7 +119,7 @@
           <div class="table-responsive bg-white shadow-sm border-0 mb-5">
             <table class="table table-hover mb-0 align-middle">
               <thead class="table-dark">
-                <tr class="text-uppercase" style="font-size: 0.85rem">
+                <tr class="text-uppercase fs-xs">
                   <th scope="col">RUT</th>
                   <th scope="col">NOMBRE</th>
                   <th scope="col">CORREO</th>
@@ -157,6 +157,10 @@
         </main>
       </div>
     </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+      <p class="mb-0 fs-xs">© 2026 Audi F1 Store — Panel de Administración. Uso interno.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/admin_validaciones.js"></script>

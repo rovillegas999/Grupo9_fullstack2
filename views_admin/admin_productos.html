@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="../css/admin.css" />
   </head>
   <body class="admin-body">
-    <!-- 
-      ARQUITECTURA DE VISTA PRIVADA (DASHBOARD)
-      Se implementa Flexbox (d-flex, vh-100) para el layout responsivo.
-      Separa lógicamente la navegación (Sidebar) del Mantenedor CRUD.
-    -->
+    <!-- Vista de administración: menú lateral + mantenedor de productos -->
     <div class="container-fluid">
       <div class="row">
         <!-- SIDEBAR -->
@@ -25,7 +21,7 @@
                 AUDI
                 <span class="text-danger">F1</span>
               </h4>
-              <p class="text-muted" style="font-size: 0.8rem; letter-spacing: 2px">PANEL DE CONTROL</p>
+              <p class="text-muted admin-brand-subtitle">PANEL DE CONTROL</p>
             </div>
 
             <ul class="nav flex-column mb-auto">
@@ -62,18 +58,18 @@
 
         <!-- MAIN CONTENT -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 admin-content">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom border-secondary">
+          <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom border-secondary">
             <h1 class="h2 fw-bold text-uppercase">Inventario</h1>
             <button class="btn btn-danger rounded-0 fw-bold">
               <i class="bi bi-plus-lg me-1"></i>
               NUEVO PRODUCTO
             </button>
-          </div>
+          </header>
 
           <!-- FORMULARIO DE PRODUCTO (CRUD) -->
           <div class="card border-0 shadow-sm rounded-0 mb-5">
             <div class="card-header bg-dark text-white rounded-0 py-3">
-              <h5 class="mb-0 fw-bold text-uppercase" style="font-size: 0.9rem">
+              <h5 class="mb-0 fw-bold text-uppercase fs-sm">
                 <i class="bi bi-pencil-square me-2"></i>
                 Gestión de Producto
               </h5>
@@ -84,29 +80,28 @@
               <form id="form-admin-producto" novalidate>
                 <div class="row g-4">
                   <div class="col-md-6">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Nombre del Producto</label>
-                    <input type="text" id="prod-nombre" class="form-control rounded-0" placeholder="Ej: Gorra F1" required />
+                    <label for="prod-nombre" class="form-label text-uppercase fw-bold fs-xxs">Nombre del Producto</label>
+                    <input type="text" id="prod-nombre" name="prod-nombre" autocomplete="off" class="form-control rounded-0" placeholder="Ej: Gorra F1" required />
                   </div>
 
                   <div class="col-md-3">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Precio ($ CLP)</label>
-                    <input type="number" id="prod-precio" class="form-control rounded-0" placeholder="0" min="1" required />
+                    <label for="prod-precio" class="form-label text-uppercase fw-bold fs-xxs">Precio ($ CLP)</label>
+                    <input type="number" id="prod-precio" name="prod-precio" class="form-control rounded-0" placeholder="0" min="1" required />
                   </div>
 
                   <div class="col-md-3">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Descuento (%)</label>
-                    <input type="number" id="prod-descuento" class="form-control rounded-0" placeholder="0 a 100" min="0" max="100" />
+                    <label for="prod-descuento" class="form-label text-uppercase fw-bold fs-xxs">Descuento (%)</label>
+                    <input type="number" id="prod-descuento" name="prod-descuento" class="form-control rounded-0" placeholder="0 a 100" min="0" max="100" />
                   </div>
 
                   <div class="col-md-12">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Descripción</label>
-                    <textarea id="prod-desc" class="form-control rounded-0" rows="3" placeholder="Detalle técnico..."></textarea>
+                    <label for="prod-desc" class="form-label text-uppercase fw-bold fs-xxs">Descripción</label>
+                    <textarea id="prod-desc" name="prod-desc" class="form-control rounded-0" rows="3" placeholder="Detalle técnico..."></textarea>
                   </div>
 
                   <div class="col-md-12">
-                    <label class="form-label text-uppercase fw-bold" style="font-size: 0.8rem">Imagen</label>
-                    <!-- Utilizamos type="file" según buenas prácticas, aunque el backend no exista -->
-                    <input type="file" id="prod-imagen" class="form-control rounded-0" accept="image/png, image/jpeg" required />
+                    <label for="prod-imagen" class="form-label text-uppercase fw-bold fs-xxs">Imagen</label>
+                    <input type="file" id="prod-imagen" name="prod-imagen" class="form-control rounded-0" accept="image/png, image/jpeg" required />
                   </div>
                 </div>
                 <div class="mt-4 text-end border-top pt-3">
@@ -125,7 +120,7 @@
           <div class="table-responsive bg-white shadow-sm border-0 mb-5">
             <table class="table table-hover mb-0 align-middle">
               <thead class="table-dark">
-                <tr class="text-uppercase" style="font-size: 0.85rem">
+                <tr class="text-uppercase fs-xs">
                   <th scope="col">ID</th>
                   <th scope="col">FOTOGRAFÍA</th>
                   <th scope="col">NOMBRE</th>
@@ -137,7 +132,7 @@
               <tbody>
                 <tr>
                   <td class="fw-bold text-muted">001</td>
-                  <td><img src="../img/Chaqueta_1.jpeg" alt="Chaqueta" style="width: 45px; height: 45px; object-fit: cover" class="border" /></td>
+                  <td><img src="../img/Chaqueta_1.jpeg" alt="Chaqueta" class="border admin-thumb" /></td>
                   <td class="fw-bold">Chaqueta Oficial F1</td>
                   <td>$120.000</td>
                   <td><span class="badge bg-secondary">0%</span></td>
@@ -148,7 +143,7 @@
                 </tr>
                 <tr>
                   <td class="fw-bold text-muted">002</td>
-                  <td><img src="../img/Gorra1.jpeg" alt="Gorra" style="width: 45px; height: 45px; object-fit: cover" class="border" /></td>
+                  <td><img src="../img/Gorra1.jpeg" alt="Gorra" class="border admin-thumb" /></td>
                   <td class="fw-bold">Gorra Negra Audi F1</td>
                   <td>$35.000</td>
                   <td><span class="badge bg-danger">15%</span></td>
@@ -163,6 +158,10 @@
         </main>
       </div>
     </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+      <p class="mb-0 fs-xs">© 2026 Audi F1 Store — Panel de Administración. Uso interno.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/admin_validaciones.js"></script>

@@ -32,7 +32,7 @@
                 <a class="nav-link" href="../index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="item1.html">Productos</a>
+                <a class="nav-link" href="productos.html">Productos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="nosotros.html">Nosotros</a>
@@ -52,7 +52,6 @@
       </nav>
     </header>
 
-    <!-- MAIN: Vista del Carrito exigida por la Rúbrica -->
     <main class="container py-5">
       <h2 class="fw-bold mb-4">MI CARRITO DE COMPRAS</h2>
 
@@ -77,8 +76,8 @@
             <div class="mb-4">
               <label for="cupon" class="form-label text-muted carrito-cupon-label">Ingrese el cupón de descuento</label>
               <div class="input-group">
-                <input type="text" id="cupon" class="form-control rounded-0" placeholder="Ej: F1AUDI" />
-                <button class="btn btn-outline-dark rounded-0" type="button">APLICAR</button>
+                <input type="text" id="cupon" name="cupon" autocomplete="off" class="form-control rounded-0" placeholder="Ej: F1AUDI" />
+                <button class="btn btn-outline-dark rounded-0" type="button" data-accion="aplicar-cupon">APLICAR</button>
               </div>
             </div>
 
@@ -90,7 +89,7 @@
             </div>
 
             <!-- Botón de Pagar -->
-            <button class="btn btn-danger w-100 fw-bold py-3 rounded-0" onclick="pagarCarrito()">PAGAR</button>
+            <button class="btn btn-danger w-100 fw-bold py-3 rounded-0" data-accion="pagar">PAGAR</button>
           </div>
         </div>
       </div>

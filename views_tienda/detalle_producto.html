@@ -40,8 +40,8 @@
       <nav aria-label="breadcrumb" class="mb-5">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="productos.html" class="text-danger fw-bold text-decoration-none">Catálogo</a></li>
-          <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Chaquetas</a></li>
-          <li class="breadcrumb-item active text-white" aria-current="page">Chaqueta Oficial F1</li>
+          <li class="breadcrumb-item"><span id="det-categoria" class="text-muted">Categoría</span></li>
+          <li class="breadcrumb-item active text-white" aria-current="page" id="det-breadcrumb-nombre">Producto</li>
         </ol>
       </nav>
 
@@ -49,27 +49,26 @@
         <!-- Columna Izquierda: Imagen Gigante -->
         <div class="col-md-6">
           <div class="bg-white p-4 shadow-sm border border-light text-center h-100 d-flex justify-content-center align-items-center">
-            <!-- Simulamos que abrió el producto ID 1 -->
-            <img src="../img/Chaqueta_1.jpeg" alt="Chaqueta Oficial Audi F1" class="img-fluid rounded-0" style="max-height: 550px; object-fit: contain" />
+            <img id="det-img" src="../img/Chaqueta_1.jpeg" alt="Producto Audi F1" class="img-fluid rounded-0 detalle-img" />
           </div>
         </div>
 
         <!-- Columna Derecha: Información y Compra -->
         <div class="col-md-6">
-          <span class="badge bg-danger mb-3 px-3 py-2 text-uppercase" style="letter-spacing: 1px">Nuevo Ingreso</span>
-          <h1 class="fw-bold text-uppercase mb-3" style="font-size: 2.5rem">Chaqueta Oficial F1</h1>
+          <span class="badge bg-danger mb-3 px-3 py-2 text-uppercase ls-1">Nuevo Ingreso</span>
+          <h1 id="det-nombre" class="fw-bold text-uppercase mb-3 detalle-titulo">Producto</h1>
           <p class="fs-2 fw-bold text-danger mb-4">
-            $120.000
+            <span id="det-precio">$0</span>
             <span class="fs-6 text-muted fw-normal ms-2">CLP (IVA incl.)</span>
           </p>
 
-          <p class="text-muted mb-4" style="line-height: 1.8; font-size: 1.05rem">
+          <p class="text-muted mb-4 detalle-desc">
             Viste los colores de la nueva era. La chaqueta oficial del equipo Audi Formula 1 está diseñada con tecnología softshell resistente al agua y al viento. Perfecta para los días de carrera y para mostrar tu apoyo a la escudería de Neuburg.
           </p>
 
           <!-- Selector de Tallas (Visual/Estético) -->
           <div class="mb-5">
-            <label class="form-label text-uppercase fw-bold text-muted" style="font-size: 0.85rem; letter-spacing: 1px">Selecciona tu talla</label>
+            <label class="form-label text-uppercase fw-bold text-muted fs-xs ls-1">Selecciona tu talla</label>
             <select class="form-select form-select-lg rounded-0 border-secondary bg-dark text-white shadow-none" aria-label="Selector de talla">
               <option selected disabled>Elige una opción...</option>
               <option value="S">S - Small</option>
@@ -79,11 +78,11 @@
             </select>
           </div>
 
-          <!-- Botón de compra (Llama al JS usando el ID 1 de la Chaqueta) -->
-          <button class="btn btn-danger w-100 fw-bold py-3 mb-4 rounded-0 text-uppercase shadow" style="font-size: 1.2rem; letter-spacing: 2px" onclick="agregarAlCarrito(1)">Añadir al Carrito</button>
+          <!-- El id del producto lo asigna el script según el parámetro ?id= de la URL -->
+          <button id="det-btn" class="btn btn-danger w-100 fw-bold py-3 mb-4 rounded-0 text-uppercase shadow btn-detalle-comprar">Añadir al Carrito</button>
 
           <!-- Perks / Garantías -->
-          <div class="d-flex align-items-center text-muted border-top border-secondary pt-4 mt-4" style="font-size: 0.9rem">
+          <div class="d-flex align-items-center text-muted border-top border-secondary pt-4 mt-4 detalle-perks">
             <span class="me-4">✅ Envío gratis sobre $50.000</span>
             <span>✅ Devolución extendida a 30 días</span>
           </div>
@@ -93,15 +92,14 @@
 
     <!-- Burbuja Flotante y Offcanvas -->
     <button
-      class="btn btn-danger rounded-circle shadow-lg d-flex justify-content-center align-items-center"
+      class="btn btn-danger rounded-circle shadow-lg d-flex justify-content-center align-items-center btn-carrito-flotante"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasCarrito"
       aria-controls="offcanvasCarrito"
-      style="position: fixed; bottom: 30px; right: 30px; z-index: 1050; width: 65px; height: 65px; font-size: 1.5rem"
     >
       🛒
-      <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" style="font-size: 0.8rem">0</span>
+      <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark fs-xxs">0</span>
     </button>
 
     <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
@@ -123,5 +121,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/carrito.js"></script>
+    <script src="../js/detalle_producto.js"></script>
   </body>
 </html>
