@@ -1,0 +1,44 @@
+/* =========================================
+   ESTILOS EXCLUSIVOS DEL DASHBOARD ADMIN
+========================================= */
+
+/* Fondo general claro para maximizar legibilidad en tablas de datos */
+body.admin-body {
+  background-color: #f4f6f9;
+}
+
+/* Panel Lateral (Sidebar) exigido por la rúbrica */
+.admin-sidebar {
+  min-height: 100vh;
+  background-color: var(--color-principal);
+  border-right: 2px solid var(--color-secundario);
+}
+
+/* Enlaces del menú lateral */
+.admin-sidebar .nav-link {
+  color: #adb5bd;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover y estado activo (Rojo Audi) */
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  color: #ffffff;
+  background-color: var(--color-secundario);
+  padding-left: 1.5rem; /* Pequeña animación hacia la derecha al pasar el mouse */
+}
+
+/* Área de contenido principal */
+.admin-content {
+  padding: 2.5rem;
+}
+
+/* Tarjetas de estadísticas (Kpis) */
+.kpi-card {
+  border-radius: 0 !important;
+  border: none;
+  border-left: 4px solid var(--color-secundario) !important;
+}

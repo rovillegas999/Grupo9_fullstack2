@@ -1,0 +1,128 @@
+/* =========================================
+   VARIABLES GLOBALES (Temática Audi F1)
+========================================= */
+/* =========================================================
+ * HOJA DE ESTILOS GLOBAL - AUDI F1
+ * Utiliza Custom Properties (Variables CSS) para unificar la paleta,
+ * resetea el Box Model base y realiza overrides sobre Bootstrap 5.
+ * ========================================================= */
+:root {
+  /* Colores oficiales Audi F1: Negro, Rojo, Blanco y Gris Oscuro */
+  --color-principal: #000000;
+  --color-secundario: #e60000;
+  --color-fondo: #ffffff;
+  --color-gris-claro: #f4f4f4;
+  --color-gris-oscuro: #1a1a1a;
+  --fuente-principal: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =========================================
+   RESETEO DE CAJAS Y ESTILOS BASE
+========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-principal);
+}
+
+/* =========================================
+   NAVBAR (Personalización de Bootstrap)
+========================================= */
+.navbar {
+  padding: 15px 0;
+  background-color: var(--color-principal) !important;
+}
+
+.navbar-brand {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-fondo) !important;
+}
+
+.navbar-brand span {
+  color: var(--color-secundario); /* "F1" en rojo para destacar */
+  font-weight: bold;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--color-fondo) !important;
+  transition: color 0.3s ease; /* Transición suave */
+}
+
+.nav-link:hover {
+  color: var(--color-secundario) !important; /* Hover en rojo */
+}
+
+/* =========================================
+   SECCIÓN HERO (Banner Principal)
+========================================= */
+.bg-light {
+  background-color: var(--color-gris-oscuro) !important;
+  color: var(--color-fondo);
+}
+
+.bg-light p {
+  color: #cccccc;
+}
+
+/* =========================================
+   TARJETAS DE PRODUCTO (Card)
+========================================= */
+.card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-radius: 0;
+  border: 1px solid #eaeaea;
+}
+
+/* Efecto hover: la tarjeta se eleva ligeramente */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+.btn-dark {
+  background-color: var(--color-secundario);
+  border: none;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-dark:hover {
+  background-color: #b30000; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* =========================================
+   MEDIA QUERIES (Diseño Responsivo)
+========================================= */
+/* Si la pantalla es menor a 768px (Tablets y celulares) */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none !important; /* Ocultamos barra lateral en móviles */
+  }
+
+  .display-4 {
+    font-size: 2.5rem; /* Achicamos el título principal en móviles */
+  }
+}

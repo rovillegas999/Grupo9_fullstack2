@@ -1,0 +1,30 @@
+/* =========================================
+   ESTILOS EXCLUSIVOS DEL CARRITO DE COMPRAS
+   (Vista completa y burbuja flotante)
+========================================= */
+
+/* --- Vista completa --- */
+.carrito-resumen-card {
+  background-color: var(--color-gris-claro) !important;
+}
+
+.carrito-cupon-label {
+  font-size: 0.9rem;
+}
+
+.carrito-tabla-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* --- Burbuja Flotante  --- */
+.carrito-burbuja-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.carrito-burbuja-title {
+  font-size: 0.95rem;
+}

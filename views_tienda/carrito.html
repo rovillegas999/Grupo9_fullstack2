@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Carrito - Audi F1 Store</title>
+    <!-- Importamos Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Importamos nuestros estilos personalizados -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/carrito.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary">
+        <div class="container">
+          <!-- Logo Audi F1 -->
+          <a class="navbar-brand fw-bold" href="../index.html">
+            AUDI
+            <span>F1</span>
+            STORE
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuTienda" aria-controls="menuTienda" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="menuTienda">
+            <!-- Enlaces ajustados para la carpeta views_tienda -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="item1.html">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nosotros.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="blog.html">Noticias F1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Iniciar Sesión</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN: Vista del Carrito exigida por la Rúbrica -->
+    <main class="container py-5">
+      <h2 class="fw-bold mb-4">MI CARRITO DE COMPRAS</h2>
+
+      <div class="row g-4">
+        <!-- Columna Izquierda: Listado de Productos -->
+        <div class="col-lg-8" id="items-carrito-page">
+          <!-- Javascript inyectará los productos aquí -->
+          <p class="text-muted">Cargando carrito...</p>
+        </div>
+
+        <!-- Columna Derecha: Recuadro de Resumen y Pago -->
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm bg-light p-4 carrito-resumen-card">
+            <h5 class="fw-bold mb-4 text-dark">RESUMEN DEL PEDIDO</h5>
+
+            <div class="d-flex justify-content-between mb-3 text-dark">
+              <span>Subtotal:</span>
+              <span id="subtotal-carrito" class="fw-bold">$0</span>
+            </div>
+
+            <!-- Cupón de descuento -->
+            <div class="mb-4">
+              <label for="cupon" class="form-label text-muted carrito-cupon-label">Ingrese el cupón de descuento</label>
+              <div class="input-group">
+                <input type="text" id="cupon" class="form-control rounded-0" placeholder="Ej: F1AUDI" />
+                <button class="btn btn-outline-dark rounded-0" type="button">APLICAR</button>
+              </div>
+            </div>
+
+            <hr class="border-secondary" />
+
+            <div class="d-flex justify-content-between mb-4">
+              <span class="fw-bold text-dark fs-5">TOTAL:</span>
+              <span class="fw-bold fs-4 text-danger" id="total-carrito">$0</span>
+            </div>
+
+            <!-- Botón de Pagar -->
+            <button class="btn btn-danger w-100 fw-bold py-3 rounded-0" onclick="pagarCarrito()">PAGAR</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+      <p class="mb-0">© 2026 Audi F1 Store. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/carrito.js"></script>
+  </body>
+</html>
