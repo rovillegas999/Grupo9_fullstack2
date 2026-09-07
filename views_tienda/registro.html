@@ -25,7 +25,7 @@
           <div class="collapse navbar-collapse" id="menuTienda">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="item1.html">Productos</a></li>
+              <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
               <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
               <li class="nav-item"><a class="nav-link" href="blog.html">Noticias F1</a></li>
               <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
@@ -44,41 +44,46 @@
             <div class="card p-4 p-md-5 login-card shadow-lg">
               <div class="text-center mb-4">
                 <h3 class="fw-bold text-uppercase">NUEVO PILOTO</h3>
-                <p class="text-muted" style="font-size: 0.9rem">Únete al equipo completando tus datos oficiales</p>
+                <p class="text-muted fs-sm">Únete al equipo completando tus datos oficiales</p>
               </div>
 
-              <div id="registro-error-msg" class="alert alert-danger d-none" role="alert" style="font-size: 0.85rem"></div>
+              <div id="registro-error-msg" class="alert alert-danger d-none fs-xs" role="alert"></div>
 
               <form id="form-registro" novalidate>
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="rut" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">RUT (Sin puntos ni guión)</label>
-                    <input type="text" class="form-control py-2" id="rut" placeholder="Ej: 19011022K" required />
+                    <label for="rut" class="form-label text-uppercase form-label-mini">RUT (Sin puntos ni guión)</label>
+                    <input type="text" class="form-control py-2" id="rut" name="rut" autocomplete="off" placeholder="Ej: 19011022K" required />
                   </div>
 
                   <div class="col-md-6">
-                    <label for="correo-reg" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Correo Electrónico</label>
-                    <input type="email" class="form-control py-2" id="correo-reg" placeholder="usuario@duoc.cl" required />
+                    <label for="correo-reg" class="form-label text-uppercase form-label-mini">Correo Electrónico</label>
+                    <input type="email" class="form-control py-2" id="correo-reg" name="correo-reg" autocomplete="email" list="dominios-correo" placeholder="usuario@duoc.cl" required />
+                    <datalist id="dominios-correo">
+                      <option value="@duoc.cl"></option>
+                      <option value="@profesor.duoc.cl"></option>
+                      <option value="@gmail.com"></option>
+                    </datalist>
                   </div>
 
                   <div class="col-md-6">
-                    <label for="nombre" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Nombre</label>
-                    <input type="text" class="form-control py-2" id="nombre" placeholder="Tu nombre" required />
+                    <label for="nombre" class="form-label text-uppercase form-label-mini">Nombre</label>
+                    <input type="text" class="form-control py-2" id="nombre" name="nombre" autocomplete="given-name" placeholder="Tu nombre" required />
                   </div>
 
                   <div class="col-md-6">
-                    <label for="apellidos" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Apellidos</label>
-                    <input type="text" class="form-control py-2" id="apellidos" placeholder="Tus apellidos" required />
+                    <label for="apellidos" class="form-label text-uppercase form-label-mini">Apellidos</label>
+                    <input type="text" class="form-control py-2" id="apellidos" name="apellidos" autocomplete="family-name" placeholder="Tus apellidos" required />
                   </div>
 
                   <div class="col-md-6">
-                    <label for="password-reg" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Contraseña</label>
-                    <input type="password" class="form-control py-2" id="password-reg" placeholder="4 a 10 caracteres" required />
+                    <label for="password-reg" class="form-label text-uppercase form-label-mini">Contraseña</label>
+                    <input type="password" class="form-control py-2" id="password-reg" name="password-reg" autocomplete="new-password" placeholder="4 a 10 caracteres" required />
                   </div>
 
                   <div class="col-md-6">
-                    <label for="password-conf" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Confirmar Contraseña</label>
-                    <input type="password" class="form-control py-2" id="password-conf" placeholder="Repite tu contraseña" required />
+                    <label for="password-conf" class="form-label text-uppercase form-label-mini">Confirmar Contraseña</label>
+                    <input type="password" class="form-control py-2" id="password-conf" name="password-conf" autocomplete="new-password" placeholder="Repite tu contraseña" required />
                   </div>
                 </div>
 
@@ -88,7 +93,7 @@
               </form>
 
               <div class="text-center mt-4">
-                <a href="login.html" class="text-white text-decoration-none" style="font-size: 0.9rem">
+                <a href="login.html" class="text-white text-decoration-none fs-sm">
                   ¿Ya eres parte del equipo?
                   <span class="text-danger fw-bold">Inicia Sesión</span>
                 </a>

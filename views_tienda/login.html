@@ -25,7 +25,7 @@
           <div class="collapse navbar-collapse" id="menuTienda">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="item1.html">Productos</a></li>
+              <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
               <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
               <li class="nav-item"><a class="nav-link" href="blog.html">Noticias F1</a></li>
               <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
@@ -44,28 +44,33 @@
             <div class="card p-4 p-md-5 login-card shadow-lg">
               <div class="text-center mb-4">
                 <h3 class="fw-bold text-uppercase">ACCESO DE PILOTO</h3>
-                <p class="text-muted" style="font-size: 0.9rem">Ingresa tus credenciales para continuar</p>
+                <p class="text-muted fs-sm">Ingresa tus credenciales para continuar</p>
               </div>
 
-              <div id="login-error-msg" class="alert alert-danger d-none" role="alert" style="font-size: 0.85rem"></div>
+              <div id="login-error-msg" class="alert alert-danger d-none fs-xs" role="alert"></div>
 
               <form id="form-login" novalidate>
                 <!--CORREO-->
                 <div class="mb-3">
-                  <label for="correo" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Correo Electrónico</label>
-                  <input type="email" class="form-control py-2" id="correo" placeholder="usuario@duoc.cl" required />
+                  <label for="correo" class="form-label text-uppercase form-label-mini">Correo Electrónico</label>
+                  <input type="email" class="form-control py-2" id="correo" name="correo" autocomplete="email" list="dominios-correo" placeholder="usuario@duoc.cl" required />
+                  <datalist id="dominios-correo">
+                    <option value="@duoc.cl"></option>
+                    <option value="@profesor.duoc.cl"></option>
+                    <option value="@gmail.com"></option>
+                  </datalist>
                 </div>
                 <!--CONTRASEÑA-->
                 <div class="mb-4">
-                  <label for="password" class="form-label text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px">Contraseña</label>
-                  <input type="password" class="form-control py-2" id="password" placeholder="••••••••" required />
+                  <label for="password" class="form-label text-uppercase form-label-mini">Contraseña</label>
+                  <input type="password" class="form-control py-2" id="password" name="password" autocomplete="current-password" placeholder="••••••••" required />
                 </div>
 
                 <button type="submit" class="btn btn-danger w-100 fw-bold py-2">INICIAR SESIÓN</button>
               </form>
 
               <div class="text-center mt-4">
-                <a href="registro.html" class="text-white text-decoration-none" style="font-size: 0.9rem">
+                <a href="registro.html" class="text-white text-decoration-none fs-sm">
                   ¿No tienes cuenta?
                   <span class="text-danger fw-bold">Regístrate</span>
                 </a>
