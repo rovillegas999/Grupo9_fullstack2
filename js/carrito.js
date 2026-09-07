@@ -1,10 +1,10 @@
 /* =========================================================
- * MOTOR DEL CARRITO DE COMPRAS (State Management)
- * Persiste datos usando `localStorage` y actualiza el DOM
- * dinámicamente mediante Template Literals (Inyección HTML).
- * ========================================================= */
+   CARRITO DE COMPRAS
+   Guarda los productos en localStorage y arma el HTML del
+   catálogo, la burbuja y la página del carrito.
+========================================================= */
 
-// Base de datos simulada (Mock) vinculada a los assets estáticos
+// Listado de productos de la tienda (datos fijos para el front)
 const productos = [
   { id: 1, nombre: "Chaqueta Oficial F1", categoria: "Chaquetas", precio: 120000, archivo: "Chaqueta_1.jpeg" },
   { id: 2, nombre: "Conjunto Deportivo F1", categoria: "Ropa", precio: 85000, archivo: "Conjunto_1.jpeg" },
@@ -22,10 +22,11 @@ const productos = [
 
 let carrito = JSON.parse(localStorage.getItem("carritoTienda")) || [];
 
-// UTILIDAD IMPORTANTE: Enrutador dinámico de imágenes según la ubicación del DOM.
-// [Resolución Dinámica de Rutas]
-// Analiza el `pathname` del BOM (Browser Object Model) para inyectar "../"
-// si el cliente navega en subcarpetas, previniendo errores 404 en imágenes.
+// Cupones válidos y su porcentaje de descuento
+const CUPONES = { F1AUDI: 10, NEUBURG2026: 15 };
+let descuentoActivo = 0;
+
+// Ajusta la ruta de las imágenes según si la página está en la raíz o en views_tienda/
 const esSubcarpeta = window.location.pathname.includes("views_tienda");
 const imgPath = esSubcarpeta ? "../img/" : "img/";
 
@@ -33,6 +34,27 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarProductos();
   actualizarContadorCarrito();
   renderizarPaginaCarrito();
+
+  // Delegación de eventos: cubre botones estáticos y los generados dinámicamente
+  document.addEventListener("click", (evento) => {
+    const boton = evento.target.closest("[data-accion]");
+    if (!boton) return;
+
+    switch (boton.dataset.accion) {
+      case "agregar":
+        agregarAlCarrito(Number(boton.dataset.id));
+        break;
+      case "eliminar":
+        eliminarDelCarrito(Number(boton.dataset.index));
+        break;
+      case "aplicar-cupon":
+        aplicarCupon();
+        break;
+      case "pagar":
+        pagarCarrito();
+        break;
+    }
+  });
 });
 
 function renderizarProductos() {
@@ -43,7 +65,8 @@ function renderizarProductos() {
   productos.forEach((producto) => {
     // Construimos la ruta dinámica de la imagen
     const rutaImagen = imgPath + producto.archivo;
-    const linkDetalle = esSubcarpeta ? "detalle_producto.html" : "views_tienda/detalle_producto.html";
+    const base = esSubcarpeta ? "detalle_producto.html" : "views_tienda/detalle_producto.html";
+    const linkDetalle = `${base}?id=${producto.id}`;
 
     const tarjetaHTML = `
             <div class="col-12 col-md-6 col-lg-3">
@@ -53,11 +76,11 @@ function renderizarProductos() {
                     </a>
                     <div class="card-body d-flex flex-column text-center p-4">
                         <a href="${linkDetalle}" class="text-decoration-none">
-                          <h5 class="card-title text-dark text-uppercase fw-bold" style="font-size: 1rem;">${producto.nombre}</h5>
+                          <h5 class="card-title text-dark text-uppercase fw-bold producto-card-title">${producto.nombre}</h5>
                         </a>
                         <p class="card-text text-muted mb-2">${producto.categoria}</p>
-                        <p class="fw-bold text-danger mb-3" style="font-size: 1.2rem;">$${producto.precio.toLocaleString("es-CL")}</p>
-                        <button class="btn btn-dark w-100 mt-auto rounded-0 fw-bold" onclick="agregarAlCarrito(${producto.id})">AÑADIR AL CARRITO</button>
+                        <p class="fw-bold text-danger mb-3 producto-card-precio">$${producto.precio.toLocaleString("es-CL")}</p>
+                        <button class="btn btn-dark w-100 mt-auto rounded-0 fw-bold" data-accion="agregar" data-id="${producto.id}">AÑADIR AL CARRITO</button>
                     </div>
                 </article>
             </div>
@@ -136,15 +159,39 @@ function renderizarPaginaCarrito() {
         <div class="text-end me-4">
           <h5 class="fw-bold mb-0 text-danger">$${prod.precio.toLocaleString("es-CL")}</h5>
         </div>
-        <button class="btn btn-outline-danger border-0 fw-bold" onclick="eliminarDelCarrito(${index})">
+        <button class="btn btn-outline-danger border-0 fw-bold" data-accion="eliminar" data-index="${index}">
           🗑️ ELIMINAR
         </button>
       </div>
     `;
   });
 
+  const totalConDescuento = total - Math.round((total * descuentoActivo) / 100);
+
   document.getElementById("subtotal-carrito").textContent = `$${total.toLocaleString("es-CL")}`;
-  document.getElementById("total-carrito").textContent = `$${total.toLocaleString("es-CL")}`;
+  document.getElementById("total-carrito").textContent = `$${totalConDescuento.toLocaleString("es-CL")}`;
+}
+
+function aplicarCupon() {
+  const input = document.getElementById("cupon");
+  if (!input) return;
+
+  const codigo = input.value.trim().toUpperCase();
+
+  if (carrito.length === 0) {
+    alert("Agrega productos al carrito antes de aplicar un cupón.");
+    return;
+  }
+
+  if (CUPONES[codigo]) {
+    descuentoActivo = CUPONES[codigo];
+    alert(`Cupón "${codigo}" aplicado: ${descuentoActivo}% de descuento.`);
+  } else {
+    descuentoActivo = 0;
+    alert("El cupón ingresado no es válido.");
+  }
+
+  renderizarPaginaCarrito();
 }
 
 function eliminarDelCarrito(index) {
@@ -161,6 +208,7 @@ function pagarCarrito() {
   }
   alert("¡Compra exitosa! Gracias por apoyar al Audi F1 Team.");
   carrito = [];
+  descuentoActivo = 0;
   localStorage.removeItem("carritoTienda");
   actualizarContadorCarrito();
   renderizarPaginaCarrito();

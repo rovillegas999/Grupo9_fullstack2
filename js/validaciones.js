@@ -51,13 +51,27 @@ function validarLogin(evento) {
   }
 }
 
-/* =========================================================
- * MÓDULO DE AUTENTICACIÓN Y SEGURIDAD FRONTEND
- * Evalúa Regex (Expresiones Regulares) en los inputs del usuario
- * y simula Routing basado en Roles.
- * ========================================================= */
+// Valida RUT chileno sin puntos ni guión (cuerpo + dígito verificador)
+function rutEsValido(rut) {
+  if (!/^[0-9]+[0-9K]$/.test(rut) || rut.length < 7 || rut.length > 9) return false;
 
-// ================== INICIALIZACIÓN Y EVENT LISTENERS ==================
+  const cuerpo = rut.slice(0, -1);
+  const dvIngresado = rut.slice(-1);
+
+  let suma = 0;
+  let multiplo = 2;
+  for (let i = cuerpo.length - 1; i >= 0; i--) {
+    suma += parseInt(cuerpo.charAt(i), 10) * multiplo;
+    multiplo = multiplo < 7 ? multiplo + 1 : 2;
+  }
+
+  const resto = 11 - (suma % 11);
+  const dvEsperado = resto === 11 ? "0" : resto === 10 ? "K" : resto.toString();
+
+  return dvEsperado === dvIngresado;
+}
+
+// ================== VALIDACIÓN DEL REGISTRO ==================
 function validarRegistro(evento) {
   evento.preventDefault();
 
@@ -73,11 +87,9 @@ function validarRegistro(evento) {
   mensajeError.textContent = "";
   mensajeError.classList.add("d-none");
 
-  // 1. Validar RUT (Mínimo 7, Máximo 9, sin puntos ni guión)
-  // Usamos una Expresión Regular (Regex) básica para validar que solo haya números y termine en K o número
-  const rutRegex = /^[0-9]+[0-9K]$/;
-  if (!rutInput || rutInput.length < 7 || rutInput.length > 9 || !rutRegex.test(rutInput)) {
-    return mostrarError("RUT inválido. Debe tener entre 7 y 9 caracteres, sin puntos ni guión (Ej: 19011022K).", mensajeError);
+  // 1. Validar RUT: entre 7 y 9 caracteres, sin puntos ni guión, y dígito verificador correcto
+  if (!rutInput || !rutEsValido(rutInput)) {
+    return mostrarError("RUT inválido. Debe tener entre 7 y 9 caracteres, sin puntos ni guión, con dígito verificador correcto (Ej: 19011022K).", mensajeError);
   }
 
   // 2. Validar Correo

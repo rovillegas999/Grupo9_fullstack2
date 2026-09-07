@@ -1,11 +1,7 @@
-/* =========================================
-   VARIABLES GLOBALES (Temática Audi F1)
-========================================= */
 /* =========================================================
- * HOJA DE ESTILOS GLOBAL - AUDI F1
- * Utiliza Custom Properties (Variables CSS) para unificar la paleta,
- * resetea el Box Model base y realiza overrides sobre Bootstrap 5.
- * ========================================================= */
+   HOJA DE ESTILOS GLOBAL - AUDI F1 STORE
+   Variables de color, reset de cajas y ajustes sobre Bootstrap 5.
+========================================================= */
 :root {
   /* Colores oficiales Audi F1: Negro, Rojo, Blanco y Gris Oscuro */
   --color-principal: #000000;
@@ -114,14 +110,60 @@ body {
 }
 
 /* =========================================
+   UTILIDADES DE TIPOGRAFÍA
+   (Reemplazan los style="" en línea del HTML)
+========================================= */
+.fs-sm {
+  font-size: 0.9rem;
+}
+.fs-xs {
+  font-size: 0.85rem;
+}
+.fs-xxs {
+  font-size: 0.8rem;
+}
+.fs-tiny {
+  font-size: 0.75rem;
+}
+.ls-1 {
+  letter-spacing: 1px;
+}
+.ls-2 {
+  letter-spacing: 2px;
+}
+.parrafo {
+  line-height: 1.8;
+}
+
+/* Etiqueta de formulario pequeña en mayúsculas */
+.form-label-mini {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Acento superior de color en tarjetas */
+.card-top-accent {
+  border-top: 4px solid var(--color-secundario) !important;
+}
+
+/* =========================================
+   BOTÓN FLOTANTE DEL CARRITO (Burbuja)
+========================================= */
+.btn-carrito-flotante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  z-index: 1050;
+  font-size: 1.5rem;
+}
+
+/* =========================================
    MEDIA QUERIES (Diseño Responsivo)
 ========================================= */
 /* Si la pantalla es menor a 768px (Tablets y celulares) */
 @media (max-width: 768px) {
-  .sidebar {
-    display: none !important; /* Ocultamos barra lateral en móviles */
-  }
-
   .display-4 {
     font-size: 2.5rem; /* Achicamos el título principal en móviles */
   }

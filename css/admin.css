@@ -7,7 +7,7 @@ body.admin-body {
   background-color: #f4f6f9;
 }
 
-/* Panel Lateral (Sidebar) exigido por la rúbrica */
+/* Panel lateral de navegación (Sidebar) */
 .admin-sidebar {
   min-height: 100vh;
   background-color: var(--color-principal);
@@ -41,4 +41,17 @@ body.admin-body {
   border-radius: 0 !important;
   border: none;
   border-left: 4px solid var(--color-secundario) !important;
+}
+
+/* Subtítulo bajo el logo del panel */
+.admin-brand-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+/* Miniatura de producto en las tablas del mantenedor */
+.admin-thumb {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
 }
